@@ -38,26 +38,13 @@ public class SplashActivity extends Activity {
         logo.setVisibility(View.VISIBLE);
 
 
-        Thread timerThread = new Thread() {
-            public void run() {
-                try {
-                    logo.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bounce));
-                    sleep(2000);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    if (checkSelfPermission()) {
-                        Intent intent = new Intent(context, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        getPermission();
-                    }
-
-                }
-            }
-        };
-        timerThread.start();
+        if (checkSelfPermission()) {
+            Intent intent = new Intent(context, MainActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            getPermission();
+        }
 
 
     }
