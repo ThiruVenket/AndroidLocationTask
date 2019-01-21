@@ -24,24 +24,16 @@ public class LocationBroadCastReceiver extends BroadcastReceiver {
                     String value = (String) intent.getExtras().get("onLocationChanged");
                     double longitude = (double) intent.getExtras().get("Longitude");
                     double latitude = (double) intent.getExtras().get("Latitude");
-                    Log.i("IntentValue", "Value == > " + value);
-//                MainActivity.Locations();
                     String showDetailedLocation = showDetailedLocation(latitude, longitude);
                     Observer.getObserver().notifyConnectionStatus("onLocationChanged", showDetailedLocation);
                 } else if (intent.getExtras().get("onStatusChanged") != null) {
                     String value = (String) intent.getExtras().get("onStatusChanged");
-                    Log.i("IntentValue", "Value == > " + value);
-//                MainActivity.Locations();
                     Observer.getObserver().notifyConnectionStatus("onStatusChanged", value);
                 } else if (intent.getExtras().get("onProviderEnabled") != null) {
                     String value = (String) intent.getExtras().get("onProviderEnabled");
-                    Log.i("IntentValue", "Value == > " + value);
-//                MainActivity.Locations();
                     Observer.getObserver().notifyConnectionStatus("onProviderEnabled", value);
                 } else if (intent.getExtras().get("onProviderDisabled") != null) {
                     String value = (String) intent.getExtras().get("onProviderDisabled");
-                    Log.i("IntentValue", "Value == > " + value);
-//                MainActivity.Locations();
                     Observer.getObserver().notifyConnectionStatus("onProviderDisabled", value);
                 }
             }

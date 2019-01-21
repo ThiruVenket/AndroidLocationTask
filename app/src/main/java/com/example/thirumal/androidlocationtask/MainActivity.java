@@ -46,6 +46,25 @@ public class MainActivity extends AppCompatActivity implements LocationInterface
             locationText = findViewById(R.id.location);
             context = this;
             locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            if (location == null) {
+                location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            }
+
+            if (location != null) {
+                latitude = location.getLatitude();
+                longitude = location.getLongitude();
+                showDetailedLocation();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -103,7 +122,9 @@ public class MainActivity extends AppCompatActivity implements LocationInterface
                     // for ActivityCompat#requestPermissions for more details.
                     return;
                 }
-                location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                if (location == null) {
+                    location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                }
 
                 if (location != null) {
                     latitude = location.getLatitude();
