@@ -35,7 +35,7 @@ public class SplashActivity extends Activity {
         setContentView(R.layout.splash_layout);
         context = this;
         logo = findViewById(R.id.logo);
-        logo.setVisibility(View.GONE);
+        logo.setVisibility(View.VISIBLE);
 
 
         if (checkSelfPermission()) {
