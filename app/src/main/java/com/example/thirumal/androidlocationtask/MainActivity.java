@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements LocationInterface
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 startActivity(intent);
+                dialog.cancel();
             }
         });
 
