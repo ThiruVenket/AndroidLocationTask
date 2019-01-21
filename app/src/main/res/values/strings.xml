@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">AndroidLocationTask</string>
+    <string name="ok">OK</string>
+    <string name="text_location_permission">Please Turn On Location</string>
+    <string name="title_location_permission">App Need Location Permission</string>
+</resources>
